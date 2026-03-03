@@ -1,0 +1,1734 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ETF Open Finance — Fintech de elite em crédito estruturado. Diagnóstico, reestruturação e expansão estratégica para traders e profissionais do mercado financeiro.">
+  <meta name="theme-color" content="#C9A84C">
+  <meta property="og:title" content="ETF Open Finance — Private Banking para Traders">
+  <meta property="og:description" content="Estruturação, reorganização e expansão estratégica de crédito para performance no mercado financeiro.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>ETF Open Finance | Private Banking para Traders</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Syne', 'system-ui', 'sans-serif'],
+            body: ['DM Sans', '-apple-system', 'sans-serif'],
+          },
+          colors: {
+            accent: { DEFAULT: '#C9A84C', hover: '#E0C872', dim: '#A68A3A' },
+            surface: { 0: '#050508', 1: '#0A0A0F', 2: '#0F0F14', 3: '#16161D', 4: '#1E1E28', 5: '#282833' },
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --accent: #C9A84C;
+      --accent-hover: color-mix(in srgb, var(--accent), white 15%);
+      --accent-dim: color-mix(in srgb, var(--accent), black 30%);
+      --accent-glow: color-mix(in srgb, var(--accent), transparent 70%);
+      --accent-glow-md: color-mix(in srgb, var(--accent), transparent 55%);
+      --accent-glow-strong: color-mix(in srgb, var(--accent), transparent 40%);
+      --accent-border: color-mix(in srgb, var(--accent), transparent 80%);
+      --accent-glass: color-mix(in srgb, var(--accent), transparent 97%);
+      --bg-0: #050508; --bg-1: #0A0A0F; --bg-2: #0F0F14; --bg-3: #16161D; --bg-4: #1E1E28; --bg-5: #282833;
+      --text-1: #F5F0E8; --text-2: #B0AAA0; --text-3: #7A7468;
+      --border-subtle: rgba(255,255,255,0.05);
+      --font-heading: 'Syne', system-ui, sans-serif;
+      --font-body: 'DM Sans', -apple-system, sans-serif;
+      --section-py: clamp(80px, 12vh, 160px);
+    }
+
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:auto}
+    body{font-family:var(--font-body);background:var(--bg-0);color:var(--text-1);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    ::selection{background:rgba(201,168,76,0.3);color:#fff}
+
+    /* ===== PRELOADER ===== */
+    #loader{position:fixed;inset:0;z-index:10000;background:var(--bg-0);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px}
+    .loader-counter{font-family:var(--font-heading);font-size:clamp(4rem,12vw,9rem);font-weight:300;letter-spacing:-0.04em;color:var(--text-1);line-height:1}
+    .loader-label{font-size:0.65rem;font-weight:500;letter-spacing:0.4em;text-transform:uppercase;color:var(--accent);opacity:0.6}
+    .loader-bar{position:fixed;bottom:0;height:2px;background:linear-gradient(90deg,var(--accent-dim),var(--accent),var(--accent-hover));transform-origin:left}
+    .loader-blinds{position:fixed;inset:0;display:flex;z-index:10001;pointer-events:none}
+    .loader-blind{flex:1;background:var(--bg-0);transform-origin:top}
+
+    /* ===== GRAIN ===== */
+    .grain::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9998;opacity:0.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+    /* ===== SCROLL PROGRESS ===== */
+    .scroll-progress{position:fixed;top:0;left:0;height:2px;z-index:200;background:linear-gradient(90deg,var(--accent-dim),var(--accent),var(--accent-hover));transform-origin:left;transform:scaleX(0);will-change:transform}
+
+    /* ===== CUSTOM CURSOR ===== */
+    @media(hover:hover){body{cursor:none}a,button,[role="button"]{cursor:none}}
+    .cursor-dot{position:fixed;width:6px;height:6px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:difference;transform:translate(-50%,-50%);opacity:0;transition:transform 0.15s,opacity 0.3s}
+    .cursor-ring{position:fixed;width:40px;height:40px;border:1px solid color-mix(in srgb, var(--accent), transparent 60%);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);opacity:0;transition:width 0.3s,height 0.3s,border-color 0.3s,opacity 0.3s}
+    .cursor-ring.hover{width:64px;height:64px;border-color:var(--accent);background:color-mix(in srgb, var(--accent), transparent 96%)}
+    .cursor-dot.hover{transform:translate(-50%,-50%) scale(0)}
+    .cursor-glow{position:fixed;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb, var(--accent), transparent 95%) 0%,transparent 65%);pointer-events:none;transform:translate(-50%,-50%);z-index:1;opacity:0;mix-blend-mode:screen}
+
+    /* ===== TYPOGRAPHY ===== */
+    .font-heading{font-family:var(--font-heading);font-weight:700}
+    .gold-text{background:linear-gradient(90deg,var(--accent-dim),var(--accent),var(--accent-hover),var(--accent),var(--accent-dim));background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:goldShimmer 4s linear infinite}
+    @keyframes goldShimmer{to{background-position:200% center}}
+    .heading-fade{background:linear-gradient(180deg,#ffffff 0%,rgba(245,240,232,0.55) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .section-label{font-family:var(--font-body);font-size:0.65rem;font-weight:500;letter-spacing:0.35em;text-transform:uppercase;color:var(--accent)}
+    .gradient-text{background:linear-gradient(135deg,var(--accent),var(--accent-hover));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+    /* ===== GLASSMORPHISM ===== */
+    .glass{background:rgba(255,255,255,0.03);backdrop-filter:blur(32px) saturate(150%);-webkit-backdrop-filter:blur(32px) saturate(150%);border:1px solid rgba(255,255,255,0.05)}
+    .glass-accent{background:color-mix(in srgb, var(--accent), transparent 97%);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--accent-border)}
+    .glass-card{background:linear-gradient(135deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.06)}
+
+    /* ===== NAV ===== */
+    nav{transition:all 0.5s cubic-bezier(0.4,0,0.2,1)}
+    nav.scrolled{background:rgba(5,5,8,0.95)!important;backdrop-filter:blur(32px)!important;-webkit-backdrop-filter:blur(32px)!important;border-bottom:1px solid var(--border-subtle);box-shadow:0 4px 30px rgba(0,0,0,0.3)}
+    .nav-link{position:relative;font-size:0.8rem;font-weight:500;color:var(--text-2);transition:color 0.3s;letter-spacing:0.04em}
+    .nav-link:hover{color:var(--accent)}
+    .nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--accent);transition:width 0.3s}
+    .nav-link:hover::after{width:100%}
+
+    /* ===== BUTTONS ===== */
+    .btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--accent-dim),var(--accent),var(--accent-hover));color:#08080A;font-family:var(--font-body);font-weight:600;padding:16px 36px;border-radius:12px;border:none;cursor:pointer;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);position:relative;overflow:hidden}
+    .btn-primary::before{content:'';position:absolute;inset:0;background:radial-gradient(300px circle at var(--btn-glow-x,50%) var(--btn-glow-y,50%),rgba(255,255,255,0.2) 0%,transparent 60%);opacity:0;transition:opacity 0.3s}
+    .btn-primary:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 0 60px var(--accent-glow-strong),0 16px 48px rgba(201,168,76,0.2)}
+    .btn-primary:hover::before{opacity:1}
+    .btn-outline{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:var(--accent);font-family:var(--font-body);font-weight:500;padding:16px 36px;border-radius:12px;border:1px solid var(--accent-border);cursor:pointer;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:all 0.35s ease}
+    .btn-outline:hover{border-color:var(--accent);background:color-mix(in srgb, var(--accent), transparent 92%);box-shadow:0 0 40px var(--accent-glow)}
+
+    /* ===== MOBILE MENU ===== */
+    .hamburger span{display:block;width:24px;height:2px;background:var(--text-1);transition:all 0.3s ease;border-radius:2px}
+    .hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hamburger.active span:nth-child(2){opacity:0;transform:scaleX(0)}
+    .hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .mobile-menu{max-height:0;overflow:hidden;transition:max-height 0.5s cubic-bezier(0.4,0,0.2,1),opacity 0.3s;opacity:0}
+    .mobile-menu.active{max-height:400px;opacity:1}
+
+    /* ===== 3D TILT CARDS ===== */
+    .tilt-card{will-change:transform;transform-style:preserve-3d;transition:transform 0.5s cubic-bezier(0.23,1,0.32,1)}
+    .tilt-card .shine{position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(circle at var(--shine-x,50%) var(--shine-y,50%),rgba(255,255,255,0.08) 0%,transparent 50%);opacity:0;transition:opacity 0.3s}
+    .tilt-card:hover .shine{opacity:1}
+
+    /* ===== ROTATING CONIC BORDER ===== */
+    @property --border-angle{syntax:'<angle>';initial-value:0deg;inherits:false}
+    .conic-border{position:relative;overflow:visible}
+    .conic-border::before{content:'';position:absolute;inset:-1px;border-radius:inherit;background:conic-gradient(from var(--border-angle,0deg),transparent 55%,var(--accent) 70%,var(--accent-hover) 75%,var(--accent) 80%,transparent 95%);z-index:-1;animation:borderSpin 5s linear infinite;opacity:0;transition:opacity 0.5s}
+    .conic-border:hover::before{opacity:1}
+    .conic-border::after{content:'';position:absolute;inset:0;border-radius:inherit;background:var(--bg-3);z-index:-1}
+    @keyframes borderSpin{to{--border-angle:360deg}}
+
+    /* ===== GLOW ===== */
+    .glow-border{position:relative;border-radius:16px;overflow:hidden}
+    .glow-border::before{content:'';position:absolute;inset:-1px;border-radius:inherit;background:conic-gradient(from var(--border-angle,0deg),transparent 60%,var(--accent) 80%,transparent 100%);animation:borderSpin 4s linear infinite;z-index:-1}
+    .glow-border::after{content:'';position:absolute;inset:1px;border-radius:inherit;background:var(--bg-3);z-index:-1}
+
+    /* ===== BIG NUMBERS ===== */
+    .big-num{font-family:var(--font-heading);font-size:clamp(5.5rem,13vw,11rem);font-weight:400;line-height:0.8;letter-spacing:-0.04em;background:linear-gradient(180deg,color-mix(in srgb, var(--accent), transparent 88%) 0%,color-mix(in srgb, var(--accent), transparent 98%) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;user-select:none}
+
+    /* ===== STEP NUMBERS ===== */
+    .step-num{font-family:var(--font-heading);font-size:4.5rem;font-weight:400;line-height:0.9;background:linear-gradient(180deg,var(--accent) 0%,color-mix(in srgb, var(--accent), transparent 85%) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+    /* ===== GOLD DOT ===== */
+    .gold-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--accent),var(--accent-hover));box-shadow:0 0 12px var(--accent-glow-md)}
+
+    /* ===== TICKER ===== */
+    .ticker-track{display:flex;width:max-content;animation:ticker 40s linear infinite}
+    @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* ===== FAQ ===== */
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height 0.5s cubic-bezier(0.4,0,0.2,1)}
+    .faq-item.active .faq-answer{max-height:300px}
+    .faq-icon{transition:transform 0.4s cubic-bezier(0.4,0,0.2,1)}
+    .faq-item.active .faq-icon{transform:rotate(45deg)}
+
+    /* ===== DIVIDER ===== */
+    .divider{height:1px;background:linear-gradient(90deg,transparent,color-mix(in srgb, var(--accent), transparent 85%),transparent)}
+
+    /* ===== PLAN HIGHLIGHT ===== */
+    .plan-highlight::before{content:'MAIS POPULAR';position:absolute;top:0;left:0;right:0;background:linear-gradient(135deg,var(--accent),var(--accent-hover));color:#08080A;font-size:0.6rem;font-weight:800;letter-spacing:0.15em;text-align:center;padding:8px 0;border-radius:16px 16px 0 0;z-index:2}
+
+    /* ===== CLIP PATH REVEALS ===== */
+    .clip-reveal{clip-path:inset(100% 0 0 0);will-change:clip-path}
+
+    /* ===== VELOCITY SKEW ===== */
+    .skew-scroll{will-change:transform}
+
+    /* ===== PARALLAX ORBS ===== */
+    .hero-orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px);opacity:0.12;will-change:transform}
+
+    /* ===== COUNTER ===== */
+    .counter{font-variant-numeric:tabular-nums}
+
+    /* ===== TESTIMONIAL CAROUSEL ===== */
+    .testimonial-slide{opacity:0;position:absolute;inset:0;transition:opacity 0.6s ease,transform 0.6s ease;transform:translateY(10px)}
+    .testimonial-slide.active{opacity:1;position:relative;transform:translateY(0)}
+
+    /* ===== CREDIT CARDS ===== */
+    .credit-card{border-radius:14px;position:relative;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,0.5),0 0 30px rgba(201,168,76,0.08);transform-style:preserve-3d}
+    .card-platinum{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 40%,#0f3460 100%)}
+    .card-gold{background:linear-gradient(135deg,#1a150a 0%,#2a2010 40%,#3d3018 70%,#4a3a1e 100%)}
+    .card-black{background:linear-gradient(135deg,#0a0a0a 0%,#1a1a1a 40%,#2a2a2a 70%,#111 100%)}
+    .card-shine{position:absolute;inset:0;background:linear-gradient(135deg,transparent 30%,rgba(255,255,255,0.06) 50%,transparent 70%);pointer-events:none}
+    .card-chip{width:28px;height:20px;border-radius:5px;background:linear-gradient(145deg,#C9A84C,#E0C872);position:relative}
+    .card-chip::after{content:'';position:absolute;inset:3px;border-radius:3px;border:1px solid rgba(0,0,0,0.15);background:linear-gradient(145deg,rgba(255,255,255,0.12),transparent)}
+    .card-contactless{width:16px;height:16px;opacity:0.35}
+    .card-holographic{position:absolute;inset:0;border-radius:inherit;opacity:0;transition:opacity 0.4s;mix-blend-mode:color-dodge;background:linear-gradient(135deg,rgba(255,0,100,0.08),rgba(0,255,200,0.08),rgba(100,100,255,0.08),rgba(255,200,0,0.08));pointer-events:none}
+    .credit-card:hover .card-holographic{opacity:1}
+
+    /* ===== HERO CARD 3D ===== */
+    @keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    @keyframes shimmerMove{0%,100%{transform:rotate(20deg) translateX(-200px)}50%{transform:rotate(20deg) translateX(500px)}}
+    .hero-3d-card{animation:floatCard 6s ease-in-out infinite}
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar{width:6px}
+    ::-webkit-scrollbar-track{background:var(--bg-0)}
+    ::-webkit-scrollbar-thumb{background:var(--bg-4);border-radius:3px}
+    ::-webkit-scrollbar-thumb:hover{background:var(--accent-dim)}
+
+    /* ===== FOCUS VISIBLE ===== */
+    :focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:4px}
+    a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:640px){
+      .hero-3d-card{width:300px!important;height:189px!important}
+      .credit-card{width:200px!important;height:125px!important}
+      .credit-card .p-4{padding:10px!important}
+      .credit-card .card-chip{width:22px!important;height:16px!important}
+    }
+
+    /* ===== REDUCED MOTION ===== */
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}
+      .hero-3d-card{animation:none!important}
+      .cursor-dot,.cursor-ring,.cursor-glow{display:none!important}
+      body{cursor:auto}
+    }
+  </style>
+</head>
+
+<body class="grain">
+
+  <!-- ===== CINEMATIC PRELOADER ===== -->
+  <div id="loader">
+    <div class="loader-label">ETF Open Finance</div>
+    <div class="loader-counter" id="loaderCounter">0</div>
+    <div class="loader-bar" id="loaderBar" style="left:0;right:0;width:0%"></div>
+  </div>
+  <div class="loader-blinds" id="loaderBlinds">
+    <div class="loader-blind"></div><div class="loader-blind"></div><div class="loader-blind"></div><div class="loader-blind"></div><div class="loader-blind"></div>
+  </div>
+
+  <!-- ===== CUSTOM CURSOR ===== -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- ===== SCROLL PROGRESS ===== -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+
+  <!-- =============================================
+       NAV-B (Premium with progress + hover underlines)
+  ============================================= -->
+  <nav class="fixed top-0 left-0 w-full z-50" id="navbar">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3" aria-label="ETF Open Finance">
+        <svg viewBox="0 0 300 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:32px;width:auto;">
+          <defs>
+            <linearGradient id="navGold" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#A68A3A"/><stop offset="50%" stop-color="#C9A84C"/><stop offset="100%" stop-color="#E0C872"/></linearGradient>
+            <linearGradient id="navWhite" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#D0CCC4"/></linearGradient>
+          </defs>
+          <rect x="8" y="12" width="10" height="56" rx="1" fill="url(#navWhite)"/>
+          <rect x="8" y="12" width="32" height="9" rx="1" fill="url(#navWhite)"/>
+          <rect x="8" y="35" width="24" height="9" rx="1" fill="url(#navGold)"/>
+          <rect x="8" y="59" width="32" height="9" rx="1" fill="url(#navWhite)"/>
+          <rect x="48" y="12" width="36" height="9" rx="1" fill="url(#navWhite)"/>
+          <rect x="61" y="12" width="10" height="56" rx="1" fill="url(#navWhite)"/>
+          <rect x="92" y="12" width="10" height="56" rx="1" fill="url(#navWhite)"/>
+          <rect x="92" y="12" width="32" height="9" rx="1" fill="url(#navWhite)"/>
+          <rect x="92" y="35" width="24" height="9" rx="1" fill="url(#navGold)"/>
+          <rect x="134" y="16" width="1.5" height="48" rx="0.75" fill="url(#navGold)" opacity="0.4"/>
+          <text x="146" y="42" font-family="DM Sans,sans-serif" font-size="13" font-weight="400" fill="#B0AAA0" letter-spacing="0.06em">Open Finance</text>
+        </svg>
+      </a>
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="#origem" class="nav-link">Origem</a>
+        <a href="#metodo" class="nav-link">Método</a>
+        <a href="#equipe" class="nav-link">Equipe</a>
+        <a href="#planos" class="nav-link">Planos</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="#planos" class="hidden sm:inline-flex btn-primary magnetic text-xs !py-3 !px-6">Iniciar Diagnóstico</a>
+        <button class="hamburger lg:hidden flex flex-col gap-[5px] p-2" id="hamburgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="mobile-menu lg:hidden px-5 pb-4" id="mobileMenu">
+      <div class="flex flex-col gap-3 pt-4 border-t" style="border-color:var(--border-subtle)">
+        <a href="#origem" class="text-sm py-2" style="color:var(--text-2)">Origem</a>
+        <a href="#metodo" class="text-sm py-2" style="color:var(--text-2)">Método</a>
+        <a href="#equipe" class="text-sm py-2" style="color:var(--text-2)">Equipe</a>
+        <a href="#planos" class="text-sm py-2" style="color:var(--text-2)">Planos</a>
+        <a href="#faq" class="text-sm py-2" style="color:var(--text-2)">FAQ</a>
+        <a href="#planos" class="btn-primary text-xs !py-3 mt-2 text-center">Iniciar Diagnóstico</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- =============================================
+       HERO: Split Layout + 3D Interactive Card + Three.js Background
+  ============================================= -->
+  <section class="relative min-h-screen flex items-center overflow-hidden" id="hero" style="background:var(--bg-0)">
+    <canvas id="hero-canvas" class="absolute inset-0 z-0" style="pointer-events:none"></canvas>
+
+    <div class="hero-orb" data-parallax="-0.4" style="width:500px;height:500px;background:var(--accent);top:10%;left:-10%"></div>
+    <div class="hero-orb" data-parallax="-0.2" style="width:350px;height:350px;background:#4A90D9;top:60%;right:-5%"></div>
+    <div class="hero-orb" data-parallax="-0.6" style="width:200px;height:200px;background:var(--accent-hover);top:30%;right:20%"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 py-32 w-full">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <!-- Left: Text -->
+        <div>
+          <div class="flex items-center gap-3 mb-8 hero-badge" style="opacity:0">
+            <div class="h-[1px] w-8" style="background:var(--accent-border)"></div>
+            <span class="section-label" id="heroLabel">Fintech Especializada em Crédito</span>
+          </div>
+
+          <h1 class="font-heading text-[clamp(3rem,8vw,6rem)] leading-[0.9] tracking-tight mb-6" id="heroHeading">
+            <span class="hero-line block overflow-hidden"><span class="hero-line-inner block heading-fade">Fintech de</span></span>
+            <span class="hero-line block overflow-hidden"><span class="hero-line-inner block gold-text">Soluções</span></span>
+            <span class="hero-line block overflow-hidden"><span class="hero-line-inner block heading-fade">Financeiras.</span></span>
+          </h1>
+
+          <p class="text-lg sm:text-xl leading-relaxed mb-10 max-w-lg hero-desc" style="color:var(--text-2);opacity:0">
+            Estruturação, reorganização e expansão estratégica de crédito para performance no mercado financeiro ou fora dele.
+          </p>
+
+          <div class="flex flex-wrap gap-4 mb-12 hero-ctas" style="opacity:0">
+            <a href="#planos" class="btn-primary magnetic">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              Fazer Diagnóstico
+            </a>
+            <a href="#metodo" class="btn-outline magnetic">Conheça o Método</a>
+          </div>
+
+          <div class="flex flex-wrap gap-3 hero-tags" style="opacity:0">
+            <span class="glass-card rounded-full px-4 py-2 text-xs font-medium" style="color:var(--text-2)">Crédito</span>
+            <span class="glass-card rounded-full px-4 py-2 text-xs font-medium" style="color:var(--text-2)">Reestruturação</span>
+            <span class="glass-card rounded-full px-4 py-2 text-xs font-medium" style="color:var(--text-2)">Assessoria</span>
+            <span class="glass-card rounded-full px-4 py-2 text-xs font-medium" style="color:var(--text-2)">Open Finance</span>
+          </div>
+        </div>
+
+        <!-- Right: Premium 3D Interactive Credit Card -->
+        <div class="flex justify-center lg:justify-end hero-card-wrap" style="opacity:0;transform:translateY(30px)">
+          <div class="relative" style="perspective:1200px">
+            <div id="heroCard" class="hero-3d-card" style="width:400px;height:252px;border-radius:20px;position:relative;transform-style:preserve-3d;cursor:grab;will-change:transform;transition:transform 0.1s ease-out">
+              <div class="hero-card-face" style="position:absolute;inset:0;border-radius:20px;overflow:hidden;background:linear-gradient(145deg,#0c0c10 0%,#131318 30%,#0e0e14 60%,#0a0a0f 100%);box-shadow:0 30px 80px rgba(0,0,0,0.6),0 0 1px rgba(201,168,76,0.3),inset 0 1px 0 rgba(255,255,255,0.05)">
+                <!-- Gold border -->
+                <div style="position:absolute;inset:0;border-radius:20px;border:1px solid rgba(201,168,76,0.2);pointer-events:none;z-index:2"></div>
+                <!-- Holographic foil overlay -->
+                <div id="holoFoil" style="position:absolute;inset:0;border-radius:20px;opacity:0;pointer-events:none;z-index:3;mix-blend-mode:color-dodge;background:linear-gradient(var(--holo-angle,135deg),rgba(255,0,100,0.12),rgba(0,255,200,0.12),rgba(100,100,255,0.12),rgba(255,200,0,0.12),rgba(0,200,255,0.12));transition:opacity 0.4s"></div>
+                <!-- Moving light reflection -->
+                <div id="cardReflection" style="position:absolute;width:200%;height:200%;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,0.06) 0%,transparent 50%);pointer-events:none;z-index:4;transform:translate(-50%,-50%);left:50%;top:50%"></div>
+                <!-- Shimmer streak -->
+                <div id="cardShimmer" style="position:absolute;inset:0;border-radius:20px;overflow:hidden;pointer-events:none;z-index:5">
+                  <div style="position:absolute;width:60px;height:250%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.04),rgba(201,168,76,0.06),rgba(255,255,255,0.04),transparent);transform:rotate(20deg) translateX(-100px);animation:shimmerMove 4s ease-in-out infinite"></div>
+                </div>
+                <!-- Card content -->
+                <div style="position:relative;z-index:6;padding:28px 32px;height:100%;display:flex;flex-direction:column;justify-content:space-between">
+                  <div class="flex items-start justify-between">
+                    <!-- Chip -->
+                    <div style="width:44px;height:34px;border-radius:8px;background:linear-gradient(145deg,#C9A84C,#E0C872,#C9A84C);position:relative;box-shadow:0 2px 8px rgba(201,168,76,0.2)">
+                      <div style="position:absolute;inset:5px;border-radius:4px;border:1px solid rgba(0,0,0,0.15);background:linear-gradient(145deg,rgba(255,255,255,0.15),transparent)"></div>
+                      <div style="position:absolute;top:50%;left:5px;right:5px;height:1px;background:rgba(0,0,0,0.12)"></div>
+                      <div style="position:absolute;left:50%;top:5px;bottom:5px;width:1px;background:rgba(0,0,0,0.12)"></div>
+                    </div>
+                    <!-- Contactless + Logo -->
+                    <div class="flex items-center gap-3">
+                      <svg viewBox="0 0 24 24" fill="none" style="width:20px;height:20px;opacity:0.4">
+                        <path d="M6.5 14.5a6.5 6.5 0 0 1 0-9.19" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M10 12.5a3.5 3.5 0 0 1 0-5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M13.5 10.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" fill="#fff" opacity="0.5"/>
+                      </svg>
+                      <svg viewBox="0 0 50 20" fill="none" style="height:14px;opacity:0.6">
+                        <rect x="0" y="0" width="4" height="20" rx="0.5" fill="#C9A84C"/>
+                        <rect x="0" y="0" width="14" height="3.5" rx="0.5" fill="#C9A84C"/>
+                        <rect x="0" y="8.25" width="10" height="3.5" rx="0.5" fill="#E0C872"/>
+                        <rect x="0" y="16.5" width="14" height="3.5" rx="0.5" fill="#C9A84C"/>
+                        <rect x="17" y="0" width="14" height="3.5" rx="0.5" fill="#C9A84C"/>
+                        <rect x="22" y="0" width="4" height="20" rx="0.5" fill="#C9A84C"/>
+                        <rect x="34" y="0" width="4" height="20" rx="0.5" fill="#C9A84C"/>
+                        <rect x="34" y="0" width="14" height="3.5" rx="0.5" fill="#C9A84C"/>
+                        <rect x="34" y="8.25" width="10" height="3.5" rx="0.5" fill="#E0C872"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <!-- Card number -->
+                  <div style="font-family:'DM Sans',monospace;font-size:1.15rem;font-weight:300;letter-spacing:0.2em;color:rgba(255,255,255,0.55);padding:0 2px">
+                    <span style="opacity:0.3">&#8226;&#8226;&#8226;&#8226;</span>&ensp;<span style="opacity:0.3">&#8226;&#8226;&#8226;&#8226;</span>&ensp;<span style="opacity:0.3">&#8226;&#8226;&#8226;&#8226;</span>&ensp;<span style="color:rgba(201,168,76,0.7)">2026</span>
+                  </div>
+                  <!-- Bottom row -->
+                  <div class="flex items-end justify-between">
+                    <div>
+                      <div style="font-size:0.55rem;letter-spacing:0.15em;color:rgba(255,255,255,0.25);margin-bottom:4px">CARDHOLDER</div>
+                      <div style="font-size:0.85rem;font-weight:500;letter-spacing:0.08em;color:rgba(255,255,255,0.7)">GABRIEL RUBIM</div>
+                    </div>
+                    <div class="text-right">
+                      <div style="font-family:var(--font-heading);font-size:1.1rem;font-weight:700;letter-spacing:0.12em;background:linear-gradient(135deg,var(--accent-dim),var(--accent),var(--accent-hover));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">BLACK</div>
+                      <div style="font-size:0.5rem;letter-spacing:0.2em;color:rgba(201,168,76,0.4);margin-top:2px">OPEN FINANCE</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Gold edge glow -->
+              <div id="cardEdgeGlow" style="position:absolute;inset:-2px;border-radius:22px;background:linear-gradient(145deg,rgba(201,168,76,0.08),transparent 40%,transparent 60%,rgba(201,168,76,0.04));z-index:-1;filter:blur(1px);pointer-events:none"></div>
+            </div>
+            <!-- Floating particles around card -->
+            <canvas id="cardParticles" style="position:absolute;inset:-40px;z-index:-1;pointer-events:none"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-surface-0 to-transparent z-10"></div>
+  </section>
+
+
+  <!-- ===== TICKER-A ===== -->
+  <section class="py-8 overflow-hidden border-y skew-scroll" style="border-color:var(--border-subtle)">
+    <div class="ticker-track">
+      <div class="flex items-center gap-16 px-8">
+        <span class="text-sm font-semibold tracking-wider whitespace-nowrap opacity-30">SERASA</span>
+        <span class="text-sm font-semibold tracking-wider whitespace-nowrap opacity-30">SPC</span>
+        <span class="text-sm font-semibold tracking-wider whitespace-nowrap opacity-30">BOA VISTA</span>
+        <span class="text-sm font-semibold tracking-wider whitespace-nowrap opacity-30">BANCO CENTRAL</span>
+        <span class="text-sm font-semibold tracking-wider whitespace-nowrap opacity-30">SANTANDER SELECT</span>
+        <span class="text-sm font-semibold tracking-wider whitespace-nowrap opacity-30">SCR</span>
+        <span class="text-sm font-semibold tracking-wider whitespace-nowrap opacity-30">REGISTRATO</span>
+        <span class="text-sm font-semibold tracking-wider whitespace-nowrap opacity-30">ETF ESCOLA DE TRADERS</span>
+      </div>
+      <div class="flex items-center gap-16 px-8">
+        <span class="text-sm font-semibold tracking-wider whitespace-nowrap opacity-30">SERASA</span>
+        <span class="text-sm font-semibold tracking-wider whitespace-nowrap opacity-30">SPC</span>
+        <span class="text-sm font-semibold tracking-wider whitespace-nowrap opacity-30">BOA VISTA</span>
+        <span class="text-sm font-semibold tracking-wider whitespace-nowrap opacity-30">BANCO CENTRAL</span>
+        <span class="text-sm font-semibold tracking-wider whitespace-nowrap opacity-30">SANTANDER SELECT</span>
+        <span class="text-sm font-semibold tracking-wider whitespace-nowrap opacity-30">SCR</span>
+        <span class="text-sm font-semibold tracking-wider whitespace-nowrap opacity-30">REGISTRATO</span>
+        <span class="text-sm font-semibold tracking-wider whitespace-nowrap opacity-30">ETF ESCOLA DE TRADERS</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       ORIGIN — Nossa História
+  ============================================= -->
+  <section class="relative overflow-hidden clip-reveal" id="origem" style="padding:var(--section-py) 0">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+        <div>
+          <span class="section-label mb-4 block reveal">A Origem</span>
+          <h2 class="font-heading text-[clamp(2.2rem,5.5vw,3.8rem)] leading-[1.02] tracking-tight mb-4 reveal">
+            <span class="heading-fade">Nascida dentro</span><br><span class="gold-text">do ecossistema ETF.</span>
+          </h2>
+          <div class="h-[2px] w-16 bg-gradient-to-r from-accent to-accent-hover mb-8"></div>
+          <div class="space-y-5 text-base leading-relaxed reveal" style="color:var(--text-2)">
+            <p>Após análise estrutural do mercado trader, que ultrapassa o âmbito operacional, percebemos uma lacuna que impacta diretamente a evolução de muitos profissionais.</p>
+            <p>Performance, por si só, não sustenta crescimento. É necessário base financeira sólida, organização estratégica e acesso estruturado a crédito para operar, crescer e escalar com consistência.</p>
+            <p>Da convergência entre a expertise de <strong class="text-white font-semibold">Gabriel Rubim</strong> no mercado trader e os mais de 10 anos de experiência de <strong class="text-white font-semibold">Davi Medeiros</strong> no mercado de crédito — nasceu a ETF Open Finance.</p>
+          </div>
+        </div>
+        <div class="space-y-0">
+          <div class="flex items-center gap-6 p-6 border-b origin-step" style="border-color:var(--border-subtle)">
+            <span class="step-num text-3xl">01</span>
+            <span class="font-heading text-xl text-white">ETF Escola de Traders</span>
+          </div>
+          <div class="flex items-center gap-6 p-6 border-b origin-step" style="border-color:var(--border-subtle)">
+            <span class="step-num text-3xl">02</span>
+            <span class="font-heading text-xl text-white">Dor identificada no mercado</span>
+          </div>
+          <div class="flex items-center gap-6 p-6 border-b origin-step" style="border-color:var(--border-subtle)">
+            <span class="step-num text-3xl">03</span>
+            <span class="font-heading text-xl text-white">Estrutura financeira criada</span>
+          </div>
+          <div class="flex items-center gap-6 p-6 origin-step">
+            <span class="step-num text-3xl">04</span>
+            <span class="font-heading text-xl gold-text">ETF Open Finance</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <!-- =============================================
+       FEATURES-B: Bento Grid — O Que Fazemos
+  ============================================= -->
+  <section class="relative" id="features" style="padding:var(--section-py) 0">
+    <div class="hero-orb" style="width:500px;height:500px;background:var(--accent);top:30%;right:-15%;opacity:0.04;filter:blur(100px)"></div>
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 relative z-10">
+      <div class="max-w-3xl mb-16">
+        <span class="section-label mb-4 block reveal">O Que Fazemos</span>
+        <h2 class="font-heading text-[clamp(2.2rem,5.5vw,3.8rem)] leading-[1.02] tracking-tight reveal">
+          <span class="heading-fade">O braço financeiro</span><br><span class="gold-text">estratégico do</span> <span class="heading-fade">ecossistema.</span>
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="tilt-card glass rounded-xl p-8 lg:col-span-2 lg:row-span-2 reveal">
+          <div class="shine"></div>
+          <div class="h-full flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background:color-mix(in srgb, var(--accent), transparent 90%)">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="color:var(--accent)"><path d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"/></svg>
+              </div>
+              <h3 class="font-heading text-2xl text-white mb-3">Diagnóstico Financeiro Completo</h3>
+              <p class="text-base leading-relaxed" style="color:var(--text-2)">Varredura de CPF nos últimos 5 anos. Análise em Serasa, SPC, Boa Vista e Banco Central (SCR). Identificação de restrições, score e mapeamento de potencial de crédito.</p>
+            </div>
+            <div class="mt-8 flex items-center gap-3">
+              <div class="gold-dot" style="width:6px;height:6px"></div>
+              <span class="text-xs font-medium" style="color:var(--accent)">Investimento 100% abatido nos planos</span>
+            </div>
+          </div>
+        </div>
+        <div class="tilt-card glass rounded-xl p-6 reveal">
+          <div class="shine"></div>
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background:color-mix(in srgb, var(--accent), transparent 90%)">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="color:var(--accent)"><path d="M4 4v5h5M20 20v-5h-5"/><path d="M20.49 9A9 9 0 005.64 5.64L4 4m16 16l-1.64-1.64A9 9 0 019 20.49"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Reestruturação de Crédito</h3>
+          <p class="text-sm" style="color:var(--text-3)">Regularização de pendências e evolução progressiva do score.</p>
+        </div>
+        <div class="tilt-card glass rounded-xl p-6 reveal">
+          <div class="shine"></div>
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background:color-mix(in srgb, var(--accent), transparent 90%)">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="color:var(--accent)"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Organização Financeira</h3>
+          <p class="text-sm" style="color:var(--text-3)">Estratégia personalizada para organizar sua base financeira.</p>
+        </div>
+        <div class="tilt-card glass rounded-xl p-6 lg:col-span-2 reveal">
+          <div class="shine"></div>
+          <div class="flex items-start gap-6">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:color-mix(in srgb, var(--accent), transparent 90%)">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="color:var(--accent)"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2">Atuação Jurídica + Evolução de Rating</h3>
+              <p class="text-sm" style="color:var(--text-3)">Suporte legal especializado para remoção de restrições e construção progressiva do perfil bancário para acesso ao crédito.</p>
+            </div>
+          </div>
+        </div>
+        <div class="tilt-card glass rounded-xl p-6 reveal">
+          <div class="shine"></div>
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background:color-mix(in srgb, var(--accent), transparent 90%)">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="color:var(--accent)"><path d="M12 2v4m0 12v4m-7.07-3.93l2.83-2.83m8.48-8.48l2.83-2.83M2 12h4m12 0h4"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Acesso ao Crédito</h3>
+          <p class="text-sm" style="color:var(--text-3)">Liberação de limites e acesso a produtos financeiros exclusivos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <!-- =============================================
+       STEPS-B: Timeline Vertical — O Método
+  ============================================= -->
+  <section class="relative overflow-hidden" id="metodo" style="padding:var(--section-py) 0">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-heading text-[20rem] sm:text-[30rem] opacity-[0.015] pointer-events-none select-none" style="color:var(--accent)">III</div>
+
+    <div class="max-w-3xl mx-auto px-5 sm:px-8">
+      <div class="text-center mb-16">
+        <span class="section-label mb-4 block reveal">O Método</span>
+        <h2 class="font-heading text-[clamp(2.4rem,5.5vw,4.2rem)] leading-[1] tracking-tight reveal">
+          <span class="heading-fade">Três etapas.</span><br><span class="gold-text">Um sistema.</span>
+        </h2>
+        <div class="h-[2px] w-16 bg-gradient-to-r from-accent to-accent-hover mx-auto mt-4 mb-6"></div>
+        <p class="text-base leading-relaxed reveal" style="color:var(--text-2)">Método estruturado para transformar a base financeira e abrir caminho para o crescimento real.</p>
+      </div>
+
+      <div class="relative">
+        <div class="absolute left-6 top-0 bottom-0 w-px" style="background:linear-gradient(180deg,transparent,var(--accent) 10%,var(--accent) 90%,transparent);opacity:0.2"></div>
+
+        <div class="space-y-12">
+          <div class="flex gap-8 items-start reveal">
+            <div class="relative flex-shrink-0">
+              <div class="w-12 h-12 rounded-full glass-accent flex items-center justify-center">
+                <span class="text-sm font-bold" style="color:var(--accent)">01</span>
+              </div>
+            </div>
+            <div class="pt-2">
+              <h3 class="font-heading text-2xl mb-2 text-white">Diagnóstico</h3>
+              <p class="text-sm leading-relaxed mb-4" style="color:var(--text-2)">Varredura completa do perfil financeiro. Identificação de restrições, análise de rating e mapeamento de potencial de crédito.</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="glass-card rounded-full px-3 py-1 text-xs" style="color:var(--text-3)">Serasa</span>
+                <span class="glass-card rounded-full px-3 py-1 text-xs" style="color:var(--text-3)">SPC</span>
+                <span class="glass-card rounded-full px-3 py-1 text-xs" style="color:var(--text-3)">Boa Vista</span>
+                <span class="glass-card rounded-full px-3 py-1 text-xs" style="color:var(--text-3)">SCR</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex gap-8 items-start reveal">
+            <div class="relative flex-shrink-0">
+              <div class="w-12 h-12 rounded-full glass-accent flex items-center justify-center">
+                <span class="text-sm font-bold" style="color:var(--accent)">02</span>
+              </div>
+            </div>
+            <div class="pt-2">
+              <h3 class="font-heading text-2xl mb-2 text-white">Reestruturação</h3>
+              <p class="text-sm leading-relaxed mb-4" style="color:var(--text-2)">Regularização de pendências, evolução de score, atuação jurídica e estratégia financeira personalizada.</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="glass-card rounded-full px-3 py-1 text-xs" style="color:var(--text-3)">Jurídico</span>
+                <span class="glass-card rounded-full px-3 py-1 text-xs" style="color:var(--text-3)">Score</span>
+                <span class="glass-card rounded-full px-3 py-1 text-xs" style="color:var(--text-3)">Registrato</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex gap-8 items-start reveal">
+            <div class="relative flex-shrink-0">
+              <div class="w-12 h-12 rounded-full glass-accent flex items-center justify-center">
+                <span class="text-sm font-bold" style="color:var(--accent)">03</span>
+              </div>
+            </div>
+            <div class="pt-2">
+              <h3 class="font-heading text-2xl mb-2 text-white">Acesso ao Crédito</h3>
+              <p class="text-sm leading-relaxed mb-4" style="color:var(--text-2)">Liberação de limites, acesso a produtos financeiros e posicionamento para escala dentro do ecossistema.</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="glass-card rounded-full px-3 py-1 text-xs" style="color:var(--text-3)">Cartões Premium</span>
+                <span class="glass-card rounded-full px-3 py-1 text-xs" style="color:var(--text-3)">Capital</span>
+                <span class="glass-card rounded-full px-3 py-1 text-xs" style="color:var(--text-3)">Escala</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <!-- =============================================
+       METRICS-B: Big Number Background
+  ============================================= -->
+  <section class="relative overflow-hidden" style="padding:var(--section-py) 0">
+    <div class="hero-orb" style="width:450px;height:450px;background:var(--accent);bottom:10%;left:-12%;opacity:0.05;filter:blur(100px)"></div>
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 relative z-10">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div class="relative reveal">
+          <div class="big-num absolute -top-4 -left-4 select-none pointer-events-none" data-parallax="-0.1">10+</div>
+          <div class="relative z-10 pt-16">
+            <div class="counter text-3xl font-heading font-bold" data-target="10" data-suffix="+">0</div>
+            <p class="text-sm mt-2" style="color:var(--text-3)">Anos de experiência em crédito</p>
+          </div>
+        </div>
+        <div class="relative reveal">
+          <div class="big-num absolute -top-4 -left-4 select-none pointer-events-none" data-parallax="-0.1">5</div>
+          <div class="relative z-10 pt-16">
+            <div class="counter text-3xl font-heading font-bold gold-text" data-target="5">0</div>
+            <p class="text-sm mt-2" style="color:var(--text-3)">Bureaus de crédito analisados</p>
+          </div>
+        </div>
+        <div class="relative reveal">
+          <div class="big-num absolute -top-4 -left-4 select-none pointer-events-none" data-parallax="-0.1">3</div>
+          <div class="relative z-10 pt-16">
+            <div class="counter text-3xl font-heading font-bold" data-target="3">0</div>
+            <p class="text-sm mt-2" style="color:var(--text-3)">Planos estratégicos</p>
+          </div>
+        </div>
+        <div class="relative reveal">
+          <div class="big-num absolute -top-4 -left-4 select-none pointer-events-none" data-parallax="-0.1">15+</div>
+          <div class="relative z-10 pt-16">
+            <div class="counter text-3xl font-heading font-bold gold-text" data-target="15" data-suffix="+">0</div>
+            <p class="text-sm mt-2" style="color:var(--text-3)">Produtos de crédito disponíveis</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <!-- =============================================
+       TEAM — Fundadores
+  ============================================= -->
+  <section class="relative" id="equipe" style="padding:var(--section-py) 0">
+    <div class="max-w-5xl mx-auto px-5 sm:px-8">
+      <div class="text-center mb-16">
+        <span class="section-label mb-4 block reveal">Nossa Equipe</span>
+        <h2 class="font-heading text-[clamp(2rem,5vw,3.5rem)] leading-tight tracking-tight reveal">
+          <span class="heading-fade">Conheça os</span> <span class="gold-text">fundadores</span>
+        </h2>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-12 justify-items-center max-w-3xl mx-auto">
+        <div class="text-center reveal">
+          <div class="w-28 h-28 rounded-full mx-auto mb-4 overflow-hidden" style="border:2px solid var(--accent-border)">
+            <div class="w-full h-full flex items-center justify-center text-3xl font-heading" style="background:color-mix(in srgb, var(--accent), transparent 92%);color:var(--accent)">GR</div>
+          </div>
+          <h3 class="font-semibold text-lg">Gabriel Rubim</h3>
+          <p class="text-sm mb-2" style="color:var(--accent)">CEO & Fundador — ETF</p>
+          <p class="text-sm leading-relaxed max-w-xs mx-auto" style="color:var(--text-3)">Empresário e referência no mercado trader. Fundador da ETF Escola de Traders, com comunidade ativa de milhares de alunos.</p>
+        </div>
+        <div class="text-center reveal">
+          <div class="w-28 h-28 rounded-full mx-auto mb-4 overflow-hidden" style="border:2px solid var(--accent-border)">
+            <div class="w-full h-full flex items-center justify-center text-3xl font-heading" style="background:color-mix(in srgb, var(--accent), transparent 92%);color:var(--accent)">DM</div>
+          </div>
+          <h3 class="font-semibold text-lg">Davi Medeiros</h3>
+          <p class="text-sm mb-2" style="color:var(--accent)">CEO — ETF Open Finance</p>
+          <p class="text-sm leading-relaxed max-w-xs mx-auto" style="color:var(--text-3)">Mais de 10 anos de experiência no mercado de crédito. Especialista em reestruturação financeira e evolução de perfil bancário.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <!-- =============================================
+       TESTIMONIALS-B: Carousel
+  ============================================= -->
+  <section class="overflow-hidden" id="depoimentos" style="padding:var(--section-py) 0">
+    <div class="max-w-4xl mx-auto px-5 sm:px-8 text-center">
+      <span class="section-label mb-4 block reveal">Depoimentos</span>
+      <h2 class="font-heading text-[clamp(2rem,5vw,3.5rem)] leading-tight tracking-tight mb-16 reveal">
+        <span class="heading-fade">Quem confia na</span> <span class="gold-text">ETF Open Finance</span>
+      </h2>
+      <div class="testimonial-carousel relative" style="min-height:200px">
+        <div class="testimonial-slide active">
+          <blockquote class="font-heading text-2xl lg:text-3xl leading-relaxed mb-8" style="color:var(--text-1)">"Consegui reestruturar todo meu crédito em 4 meses. Hoje tenho acesso a linhas que antes eram impossíveis."</blockquote>
+          <div class="text-sm font-semibold">Rafael Mendes</div>
+          <div class="text-xs" style="color:var(--text-3)">Trader Profissional — SP</div>
+        </div>
+        <div class="testimonial-slide">
+          <blockquote class="font-heading text-2xl lg:text-3xl leading-relaxed mb-8" style="color:var(--text-1)">"O diagnóstico mostrou coisas que eu nem sabia sobre meu próprio CPF. A equipe foi impecável."</blockquote>
+          <div class="text-sm font-semibold">Camila Torres</div>
+          <div class="text-xs" style="color:var(--text-3)">Empresária — RJ</div>
+        </div>
+        <div class="testimonial-slide">
+          <blockquote class="font-heading text-2xl lg:text-3xl leading-relaxed mb-8" style="color:var(--text-1)">"Do plano Estratégico ao cartão Black em 8 meses. Metodologia séria e resultado real."</blockquote>
+          <div class="text-sm font-semibold">Lucas Andrade</div>
+          <div class="text-xs" style="color:var(--text-3)">Day Trader — MG</div>
+        </div>
+      </div>
+      <div class="flex justify-center gap-2 mt-8">
+        <button class="carousel-dot w-2 h-2 rounded-full transition-all" style="background:var(--accent)" data-slide="0" aria-label="Depoimento 1"></button>
+        <button class="carousel-dot w-2 h-2 rounded-full transition-all" style="background:rgba(255,255,255,0.2)" data-slide="1" aria-label="Depoimento 2"></button>
+        <button class="carousel-dot w-2 h-2 rounded-full transition-all" style="background:rgba(255,255,255,0.2)" data-slide="2" aria-label="Depoimento 3"></button>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <!-- =============================================
+       PRICING-B: Conic Border Cards
+  ============================================= -->
+  <section class="relative clip-reveal" id="planos" style="padding:var(--section-py) 0">
+    <!-- Ambient glow orbs -->
+    <div class="hero-orb" style="width:600px;height:600px;background:var(--accent);top:20%;left:-15%;opacity:0.06;filter:blur(120px)"></div>
+    <div class="hero-orb" style="width:400px;height:400px;background:#4A90D9;bottom:10%;right:-10%;opacity:0.04;filter:blur(100px)"></div>
+    <!-- Particle canvas behind pricing -->
+    <canvas id="pricing-particles" class="absolute inset-0 z-0" style="pointer-events:none;opacity:0.5"></canvas>
+    <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-20">
+        <span class="section-label mb-4 block reveal">Comparativo de Planos</span>
+        <h2 class="font-heading text-[clamp(2.4rem,5.5vw,4.2rem)] leading-[1] tracking-tight reveal">
+          <span class="heading-fade">Escolha o plano</span><br><span class="gold-text">ideal para você.</span>
+        </h2>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-6 items-start">
+        <!-- ESSENCIAL — Platinum Card -->
+        <div class="tilt-card glass-card rounded-2xl overflow-hidden reveal conic-border">
+          <div class="shine"></div>
+          <div class="p-8 pb-4">
+            <span class="section-label mb-2 inline-block">Plano 01 · Essencial</span>
+            <h3 class="font-heading text-4xl text-white mb-4">Essencial.</h3>
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="font-heading text-4xl gold-text" style="letter-spacing:-0.02em">R$ 3.797</span>
+              <span class="text-sm" style="color:var(--text-3)">,00</span>
+            </div>
+            <span class="text-sm font-medium" style="color:var(--text-3)">3 meses</span>
+          </div>
+          <!-- 3D Credit Card -->
+          <div class="flex justify-center py-5" style="perspective:800px">
+            <div class="credit-card card-platinum" style="width:240px;height:150px">
+              <div class="card-holographic"></div>
+              <div class="card-shine"></div>
+              <div class="p-4 h-full flex flex-col justify-between relative z-10">
+                <div class="flex justify-between items-start">
+                  <div class="card-chip"></div>
+                  <svg viewBox="0 0 24 24" fill="none" class="card-contactless"><path d="M6.5 14.5a6.5 6.5 0 0 1 0-9.19" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><path d="M10 12.5a3.5 3.5 0 0 1 0-5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <div style="font-family:'DM Sans',monospace;font-size:0.75rem;letter-spacing:0.18em;color:rgba(255,255,255,0.35)">&#8226;&#8226;&#8226;&#8226; &ensp;&#8226;&#8226;&#8226;&#8226; &ensp;&#8226;&#8226;&#8226;&#8226; &ensp;<span style="color:rgba(201,168,76,0.6)">2026</span></div>
+                <div class="flex justify-between items-end">
+                  <div>
+                    <div class="text-sm font-black tracking-widest text-white" style="font-family:'DM Sans'">ETF</div>
+                    <div class="text-[0.5rem] tracking-wider gold-text">Open Finance</div>
+                  </div>
+                  <span class="text-[0.6rem] font-bold tracking-widest" style="color:rgba(255,255,255,0.5)">PLATINUM</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="p-8 pt-2">
+            <div class="space-y-2 mb-6">
+              <div class="flex items-center gap-3"><div class="gold-dot" style="width:5px;height:5px"></div><span class="text-xs" style="color:var(--text-2)">3 meses de assessoria · 2 calls/mês</span></div>
+              <div class="flex items-center gap-3"><div class="gold-dot" style="width:5px;height:5px"></div><span class="text-xs" style="color:var(--text-2)">Consultoria financeira personalizada</span></div>
+              <div class="flex items-center gap-3"><div class="gold-dot" style="width:5px;height:5px"></div><span class="text-xs" style="color:var(--text-2)">Regularização de pendências</span></div>
+              <div class="flex items-center gap-3"><div class="gold-dot" style="width:5px;height:5px"></div><span class="text-xs" style="color:var(--text-2)">Estratégia de evolução de rating</span></div>
+              <div class="flex items-center gap-3"><div class="gold-dot" style="width:5px;height:5px"></div><span class="text-xs font-medium" style="color:var(--accent)">Bônus: Limite adicional R$ 500</span></div>
+            </div>
+            <div class="text-center p-4 rounded-xl mb-5" style="background:color-mix(in srgb, var(--accent), transparent 95%);border:1px solid var(--accent-border)">
+              <span class="text-xs uppercase tracking-wider font-medium" style="color:var(--text-3)">Limite disponível</span>
+              <div class="font-heading text-3xl text-white mt-1">R$ 1.898,50</div>
+            </div>
+            <a href="#" class="btn-outline w-full text-center text-xs magnetic">Escolher Essencial</a>
+          </div>
+        </div>
+
+        <!-- ESTRATÉGICO — Gold Card -->
+        <div class="tilt-card glass-accent rounded-2xl overflow-hidden reveal conic-border plan-highlight relative" style="border:1px solid var(--accent-border)">
+          <div class="shine"></div>
+          <div class="p-8 pb-4 pt-12">
+            <span class="section-label mb-2 inline-block">Plano 02 · Estratégico</span>
+            <h3 class="font-heading text-4xl text-white mb-4">Estratégico.</h3>
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="font-heading text-4xl gold-text" style="letter-spacing:-0.02em">R$ 6.297</span>
+              <span class="text-sm" style="color:var(--text-3)">,00</span>
+            </div>
+            <span class="text-sm font-medium" style="color:var(--text-3)">6 meses</span>
+          </div>
+          <!-- 3D Credit Card -->
+          <div class="flex justify-center py-5" style="perspective:800px">
+            <div class="credit-card card-gold" style="width:240px;height:150px">
+              <div class="card-holographic"></div>
+              <div class="card-shine"></div>
+              <div class="p-4 h-full flex flex-col justify-between relative z-10">
+                <div class="flex justify-between items-start">
+                  <div class="card-chip"></div>
+                  <svg viewBox="0 0 24 24" fill="none" class="card-contactless"><path d="M6.5 14.5a6.5 6.5 0 0 1 0-9.19" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><path d="M10 12.5a3.5 3.5 0 0 1 0-5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <div style="font-family:'DM Sans',monospace;font-size:0.75rem;letter-spacing:0.18em;color:rgba(255,255,255,0.35)">&#8226;&#8226;&#8226;&#8226; &ensp;&#8226;&#8226;&#8226;&#8226; &ensp;&#8226;&#8226;&#8226;&#8226; &ensp;<span style="color:rgba(201,168,76,0.6)">2026</span></div>
+                <div class="flex justify-between items-end">
+                  <div>
+                    <div class="text-sm font-black tracking-widest text-white" style="font-family:'DM Sans'">ETF</div>
+                    <div class="text-[0.5rem] tracking-wider" style="color:var(--accent-hover)">Open Finance</div>
+                  </div>
+                  <span class="text-[0.6rem] font-bold tracking-widest" style="color:rgba(255,255,255,0.7)">GOLD</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="p-8 pt-2">
+            <div class="space-y-2 mb-6">
+              <div class="flex items-center gap-3"><div class="gold-dot" style="width:5px;height:5px"></div><span class="text-xs" style="color:var(--text-2)">6 meses de assessoria · 2 calls/mês</span></div>
+              <div class="flex items-center gap-3"><div class="gold-dot" style="width:5px;height:5px"></div><span class="text-xs" style="color:var(--text-2)">Consultoria financeira personalizada</span></div>
+              <div class="flex items-center gap-3"><div class="gold-dot" style="width:5px;height:5px"></div><span class="text-xs" style="color:var(--text-2)">Regularização + evolução de rating</span></div>
+              <div class="flex items-center gap-3"><div class="gold-dot" style="width:5px;height:5px"></div><span class="text-xs" style="color:var(--text-2)">Atuação em SCR / Registrato</span></div>
+              <div class="flex items-center gap-3"><div class="gold-dot" style="width:5px;height:5px"></div><span class="text-xs" style="color:var(--text-2)">Conta Select Santander</span></div>
+              <div class="flex items-center gap-3"><div class="gold-dot" style="width:5px;height:5px"></div><span class="text-xs font-medium" style="color:var(--accent)">Bônus: Limite adicional R$ 500</span></div>
+            </div>
+            <div class="text-center p-4 rounded-xl mb-5" style="background:color-mix(in srgb, var(--accent), transparent 92%);border:1px solid var(--accent-border)">
+              <span class="text-xs uppercase tracking-wider font-medium" style="color:var(--text-3)">Limite disponível</span>
+              <div class="font-heading text-3xl gold-text mt-1">R$ 3.148,50</div>
+            </div>
+            <a href="#" class="btn-primary w-full text-center text-xs magnetic">Escolher Estratégico</a>
+          </div>
+        </div>
+
+        <!-- BLACK — Black Card -->
+        <div class="tilt-card glass-card rounded-2xl overflow-hidden reveal conic-border">
+          <div class="shine"></div>
+          <div class="p-8 pb-4">
+            <span class="section-label mb-2 inline-block">Plano 03 · Black</span>
+            <h3 class="font-heading text-4xl text-white mb-4">Black.</h3>
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="font-heading text-4xl gold-text" style="letter-spacing:-0.02em">R$ 12.297</span>
+              <span class="text-sm" style="color:var(--text-3)">,00</span>
+            </div>
+            <span class="text-sm font-medium" style="color:var(--text-3)">12 meses</span>
+          </div>
+          <!-- 3D Credit Card -->
+          <div class="flex justify-center py-5" style="perspective:800px">
+            <div class="credit-card card-black" style="width:240px;height:150px">
+              <div class="card-holographic"></div>
+              <div class="card-shine"></div>
+              <div class="p-4 h-full flex flex-col justify-between relative z-10">
+                <div class="flex justify-between items-start">
+                  <div class="card-chip"></div>
+                  <svg viewBox="0 0 24 24" fill="none" class="card-contactless"><path d="M6.5 14.5a6.5 6.5 0 0 1 0-9.19" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><path d="M10 12.5a3.5 3.5 0 0 1 0-5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <div style="font-family:'DM Sans',monospace;font-size:0.75rem;letter-spacing:0.18em;color:rgba(255,255,255,0.35)">&#8226;&#8226;&#8226;&#8226; &ensp;&#8226;&#8226;&#8226;&#8226; &ensp;&#8226;&#8226;&#8226;&#8226; &ensp;<span style="color:rgba(201,168,76,0.6)">2026</span></div>
+                <div class="flex justify-between items-end">
+                  <div>
+                    <div class="text-sm font-black tracking-widest text-white" style="font-family:'DM Sans'">ETF</div>
+                    <div class="text-[0.5rem] tracking-wider gold-text">Open Finance</div>
+                  </div>
+                  <span class="text-[0.6rem] font-bold tracking-widest" style="color:rgba(255,255,255,0.45)">BLACK</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="p-8 pt-2">
+            <div class="space-y-2 mb-6">
+              <div class="flex items-center gap-3"><div class="gold-dot" style="width:5px;height:5px"></div><span class="text-xs" style="color:var(--text-2)">12 meses de assessoria · 2 calls/mês</span></div>
+              <div class="flex items-center gap-3"><div class="gold-dot" style="width:5px;height:5px"></div><span class="text-xs" style="color:var(--text-2)">Consultoria financeira personalizada</span></div>
+              <div class="flex items-center gap-3"><div class="gold-dot" style="width:5px;height:5px"></div><span class="text-xs" style="color:var(--text-2)">Regularização completa + SCR / Registrato</span></div>
+              <div class="flex items-center gap-3"><div class="gold-dot" style="width:5px;height:5px"></div><span class="text-xs" style="color:var(--text-2)">Evolução de rating + Conta Select</span></div>
+              <div class="flex items-center gap-3"><div class="gold-dot" style="width:5px;height:5px"></div><span class="text-xs" style="color:var(--text-2)">Acompanhamento contábil exclusivo</span></div>
+              <div class="flex items-center gap-3"><div class="gold-dot" style="width:5px;height:5px"></div><span class="text-xs font-medium" style="color:var(--accent)">Bônus: Limite adicional R$ 1.000</span></div>
+            </div>
+            <div class="text-center p-4 rounded-xl mb-5" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08)">
+              <span class="text-xs uppercase tracking-wider font-medium" style="color:var(--text-3)">Limite disponível</span>
+              <div class="font-heading text-3xl text-white mt-1">R$ 6.148,50</div>
+            </div>
+            <a href="#" class="btn-outline w-full text-center text-xs magnetic">Escolher Black</a>
+          </div>
+        </div>
+      </div>
+      <p class="text-center text-sm mt-8 italic reveal" style="color:var(--text-3)">O limite poderá ser ampliado gradativamente conforme o plano escolhido e evolução do relacionamento.</p>
+    </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <!-- =============================================
+       FAQ-A: Accordion
+  ============================================= -->
+  <section class="relative" id="faq" style="padding:var(--section-py) 0">
+    <div class="max-w-3xl mx-auto px-5 sm:px-8">
+      <div class="text-center mb-16">
+        <span class="section-label mb-4 block reveal">Dúvidas Frequentes</span>
+        <h2 class="font-heading text-[clamp(2.2rem,5.5vw,3.5rem)] leading-[1.02] tracking-tight reveal">
+          <span class="heading-fade">Perguntas</span> <span class="gold-text">Frequentes</span>
+        </h2>
+      </div>
+      <div class="space-y-2">
+        <div class="faq-item border-b reveal" style="border-color:rgba(255,255,255,0.06)">
+          <button class="faq-trigger w-full flex items-center justify-between py-5 text-left">
+            <span class="font-heading text-lg text-white pr-8">O que é o diagnóstico financeiro?</span>
+            <span class="faq-icon text-xl flex-shrink-0 font-light" style="color:var(--accent)">+</span>
+          </button>
+          <div class="faq-answer">
+            <p class="text-sm pb-5" style="color:var(--text-2)">É uma varredura completa do seu CPF nos últimos 5 anos, incluindo análise no Serasa, SPC, Boa Vista e Banco Central (SCR). O investimento de R$ 297 é 100% abatido na contratação de qualquer plano.</p>
+          </div>
+        </div>
+        <div class="faq-item border-b reveal" style="border-color:rgba(255,255,255,0.06)">
+          <button class="faq-trigger w-full flex items-center justify-between py-5 text-left">
+            <span class="font-heading text-lg text-white pr-8">Quanto tempo leva para ter acesso ao crédito?</span>
+            <span class="faq-icon text-xl flex-shrink-0 font-light" style="color:var(--accent)">+</span>
+          </button>
+          <div class="faq-answer">
+            <p class="text-sm pb-5" style="color:var(--text-2)">O prazo depende do seu perfil e plano escolhido. Essencial: 3 meses, Estratégico: 6 meses, Black: 12 meses. O crédito é construído com base em perfil e estratégia.</p>
+          </div>
+        </div>
+        <div class="faq-item border-b reveal" style="border-color:rgba(255,255,255,0.06)">
+          <button class="faq-trigger w-full flex items-center justify-between py-5 text-left">
+            <span class="font-heading text-lg text-white pr-8">Posso contratar produtos avulsos?</span>
+            <span class="faq-icon text-xl flex-shrink-0 font-light" style="color:var(--accent)">+</span>
+          </button>
+          <div class="faq-answer">
+            <p class="text-sm pb-5" style="color:var(--text-2)">Sim. Para quem já possui perfil estruturado, oferecemos acesso direto a financiamentos, consórcios, capital de giro e crédito pessoal.</p>
+          </div>
+        </div>
+        <div class="faq-item border-b reveal" style="border-color:rgba(255,255,255,0.06)">
+          <button class="faq-trigger w-full flex items-center justify-between py-5 text-left">
+            <span class="font-heading text-lg text-white pr-8">Vocês garantem aprovação de crédito?</span>
+            <span class="faq-icon text-xl flex-shrink-0 font-light" style="color:var(--accent)">+</span>
+          </button>
+          <div class="faq-answer">
+            <p class="text-sm pb-5" style="color:var(--text-2)">Não. Trabalhamos com transparência total. O crédito não é automático — é construído com método e construção real. Cada caso é único e o resultado depende do perfil e comprometimento.</p>
+          </div>
+        </div>
+        <div class="faq-item border-b reveal" style="border-color:rgba(255,255,255,0.06)">
+          <button class="faq-trigger w-full flex items-center justify-between py-5 text-left">
+            <span class="font-heading text-lg text-white pr-8">Qual a diferença entre os planos?</span>
+            <span class="faq-icon text-xl flex-shrink-0 font-light" style="color:var(--accent)">+</span>
+          </button>
+          <div class="faq-answer">
+            <p class="text-sm pb-5" style="color:var(--text-2)">Cada plano difere em tempo de assessoria, limite de crédito disponível e escopo de serviços. O Essencial foca na regularização básica (3 meses), o Estratégico inclui atuação em SCR e Conta Select (6 meses), e o Black oferece acompanhamento contábil completo por 12 meses.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <!-- =============================================
+       CTA-B: Canvas Particles + Word Reveal
+  ============================================= -->
+  <section class="relative overflow-hidden clip-reveal" id="cta" style="padding:clamp(100px,16vh,200px) 0">
+    <canvas id="cta-canvas" class="absolute inset-0 z-0" style="pointer-events:none"></canvas>
+    <div class="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 text-center">
+      <span class="section-label mb-6 inline-block reveal">Private Banking para Traders</span>
+      <h2 class="font-heading text-[clamp(3rem,7.5vw,5.5rem)] leading-[0.9] tracking-tighter mb-6">
+        <span class="cta-word block overflow-hidden"><span class="cta-word-inner block heading-fade">Estrutura.</span></span>
+        <span class="cta-word block overflow-hidden"><span class="cta-word-inner block gold-text">Organização.</span></span>
+        <span class="cta-word block overflow-hidden"><span class="cta-word-inner block heading-fade">Escala.</span></span>
+      </h2>
+      <p class="text-lg max-w-lg mx-auto mb-10 reveal" style="color:var(--text-2)">
+        Não prometemos milagres.<br><strong class="text-white">Trabalhamos com método,</strong> estratégia e construção de perfil.
+      </p>
+      <a href="#planos" class="btn-primary magnetic text-base !px-10 !py-4 reveal">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Iniciar Diagnóstico
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ===== FOOTER-A ===== -->
+  <footer class="border-t py-16" style="border-color:var(--border-subtle);background:var(--bg-1)">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div>
+          <div class="flex items-center mb-4">
+            <span class="text-2xl font-black tracking-tight text-white" style="font-family:'DM Sans'">ETF</span>
+            <span class="w-[2px] h-6 mx-2" style="background:var(--accent-border)"></span>
+            <span class="text-xs font-medium" style="color:var(--text-3)">Open Finance</span>
+          </div>
+          <p class="text-sm mb-4" style="color:var(--text-3)">Fintech especializada em crédito.<br>Private Banking para Traders.</p>
+        </div>
+        <div>
+          <h4 class="font-heading text-base text-white mb-4">Navegação</h4>
+          <div class="space-y-2">
+            <a href="#origem" class="block text-sm hover:text-white transition-colors" style="color:var(--text-3)">Origem</a>
+            <a href="#metodo" class="block text-sm hover:text-white transition-colors" style="color:var(--text-3)">Método</a>
+            <a href="#equipe" class="block text-sm hover:text-white transition-colors" style="color:var(--text-3)">Equipe</a>
+            <a href="#planos" class="block text-sm hover:text-white transition-colors" style="color:var(--text-3)">Planos</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-heading text-base text-white mb-4">Soluções</h4>
+          <div class="space-y-2">
+            <a href="#features" class="block text-sm hover:text-white transition-colors" style="color:var(--text-3)">Diagnóstico</a>
+            <a href="#features" class="block text-sm hover:text-white transition-colors" style="color:var(--text-3)">Reestruturação</a>
+            <a href="#features" class="block text-sm hover:text-white transition-colors" style="color:var(--text-3)">Capital de Giro</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-heading text-base text-white mb-4">Contato</h4>
+          <div class="space-y-2">
+            <a href="#" class="block text-sm hover:text-white transition-colors" style="color:var(--text-3)">WhatsApp</a>
+            <a href="#" class="block text-sm hover:text-white transition-colors" style="color:var(--text-3)">Instagram</a>
+            <a href="#" class="block text-sm hover:text-white transition-colors" style="color:var(--text-3)">E-mail</a>
+          </div>
+        </div>
+      </div>
+      <div class="divider mb-8"></div>
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs" style="color:var(--text-3)">
+        <span>&copy; 2026 ETF Open Finance. Todos os direitos reservados.</span>
+        <span>Feito com estratégia e precisão.</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- =============================================
+       SCRIPTS
+  ============================================= -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/SplitText.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <script>
+  (function(){
+    'use strict';
+
+    // ========================================
+    // THREE.JS — 3D HERO (floating geometry)
+    // ========================================
+    function init3DHero() {
+      const canvas = document.getElementById('hero-canvas');
+      if (!canvas || typeof THREE === 'undefined') return;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(60, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
+      camera.position.z = 8;
+
+      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+      renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      const accentColor = new THREE.Color(0xC9A84C);
+      const dimColor = accentColor.clone().multiplyScalar(0.3);
+
+      const wireMat = new THREE.MeshStandardMaterial({
+        color: dimColor, emissive: accentColor, emissiveIntensity: 0.15,
+        wireframe: true, transparent: true, opacity: 0.12,
+      });
+      const solidMat = new THREE.MeshStandardMaterial({
+        color: 0xC9A84C, metalness: 0.9, roughness: 0.15,
+        emissive: 0xC9A84C, emissiveIntensity: 0.05
+      });
+
+      const geometries = [
+        new THREE.IcosahedronGeometry(1.5, 1),
+        new THREE.TorusGeometry(1.2, 0.04, 16, 100),
+        new THREE.OctahedronGeometry(0.8, 0),
+        new THREE.TorusGeometry(0.6, 0.02, 8, 60),
+      ];
+
+      const meshes = [];
+      const positions = [
+        { x: 3, y: 0.5, z: -2 },
+        { x: -2.5, y: -0.5, z: -3 },
+        { x: 1, y: -2, z: -1.5 },
+        { x: -1.5, y: 2, z: -2 },
+      ];
+
+      geometries.forEach((geo, i) => {
+        const mat = i % 2 === 0 ? wireMat.clone() : solidMat.clone();
+        const mesh = new THREE.Mesh(geo, mat);
+        const p = positions[i];
+        mesh.position.set(p.x, p.y, p.z);
+        mesh.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0);
+        mesh.userData = {
+          rotSpeed: { x: (Math.random() - 0.5) * 0.005, y: (Math.random() - 0.5) * 0.005 },
+          floatSpeed: 0.3 + Math.random() * 0.5,
+          floatAmp: 0.3 + Math.random() * 0.4,
+          initY: p.y,
+        };
+        scene.add(mesh);
+        meshes.push(mesh);
+      });
+
+      // Particles
+      const pGeo = new THREE.BufferGeometry();
+      const pCount = 100;
+      const pPos = new Float32Array(pCount * 3);
+      for (let i = 0; i < pCount * 3; i += 3) {
+        pPos[i] = (Math.random() - 0.5) * 14;
+        pPos[i+1] = (Math.random() - 0.5) * 10;
+        pPos[i+2] = (Math.random() - 0.5) * 6 - 3;
+      }
+      pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+      scene.add(new THREE.Points(pGeo, new THREE.PointsMaterial({ color: 0xC9A84C, size: 0.02, transparent: true, opacity: 0.3 })));
+
+      scene.add(new THREE.AmbientLight(0xffffff, 0.3));
+      const dirLight = new THREE.DirectionalLight(0xC9A84C, 0.5);
+      dirLight.position.set(5, 5, 5);
+      scene.add(dirLight);
+
+      let mouseX = 0, mouseY = 0;
+      document.addEventListener('mousemove', e => {
+        mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+        mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+      });
+
+      function animate() {
+        requestAnimationFrame(animate);
+        const t = Date.now() * 0.001;
+        meshes.forEach(m => {
+          m.rotation.x += m.userData.rotSpeed.x;
+          m.rotation.y += m.userData.rotSpeed.y;
+          m.position.y = m.userData.initY + Math.sin(t * m.userData.floatSpeed) * m.userData.floatAmp;
+        });
+        camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.02;
+        camera.position.y += (-mouseY * 0.3 - camera.position.y) * 0.02;
+        camera.lookAt(scene.position);
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      window.addEventListener('resize', () => {
+        camera.aspect = canvas.clientWidth / canvas.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+      });
+    }
+
+    // ========================================
+    // THREE.JS — CTA PARTICLES
+    // ========================================
+    function initParticleCloud(canvasId) {
+      const canvas = document.getElementById(canvasId);
+      if (!canvas || typeof THREE === 'undefined') return;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(60, canvas.clientWidth / canvas.clientHeight, 0.1, 50);
+      camera.position.z = 5;
+      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+      renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      const geo = new THREE.BufferGeometry();
+      const count = 200;
+      const pos = new Float32Array(count * 3);
+      for (let i = 0; i < count * 3; i += 3) {
+        pos[i] = (Math.random() - 0.5) * 14;
+        pos[i+1] = (Math.random() - 0.5) * 8;
+        pos[i+2] = (Math.random() - 0.5) * 6 - 2;
+      }
+      geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+      const mat = new THREE.PointsMaterial({ color: 0xC9A84C, size: 0.03, transparent: true, opacity: 0.35 });
+      const points = new THREE.Points(geo, mat);
+      scene.add(points);
+
+      function animate() {
+        requestAnimationFrame(animate);
+        points.rotation.y += 0.0004;
+        points.rotation.x += 0.0002;
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      window.addEventListener('resize', () => {
+        camera.aspect = canvas.clientWidth / canvas.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+      });
+    }
+
+    // ========================================
+    // HERO CARD — 3D TILT + HOLOGRAPHIC + PARTICLES
+    // ========================================
+    function initHoloCard() {
+      const card = document.getElementById('heroCard');
+      if (!card) return;
+
+      const foil = document.getElementById('holoFoil');
+      const reflection = document.getElementById('cardReflection');
+      const particleCanvas = document.getElementById('cardParticles');
+
+      let isHovering = false;
+      let currentRotX = 0, currentRotY = 0;
+      let targetRotX = 0, targetRotY = 0;
+
+      card.addEventListener('mouseenter', () => {
+        isHovering = true;
+        card.style.animationPlayState = 'paused';
+        if (foil) foil.style.opacity = '1';
+      });
+
+      card.addEventListener('mouseleave', () => {
+        isHovering = false;
+        targetRotX = 0; targetRotY = 0;
+        card.style.animationPlayState = '';
+        if (foil) foil.style.opacity = '0';
+      });
+
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+        const centerX = x - 0.5;
+        const centerY = y - 0.5;
+
+        targetRotY = centerX * 25;
+        targetRotX = -centerY * 20;
+
+        const angle = Math.atan2(centerY, centerX) * (180 / Math.PI) + 180;
+        if (foil) foil.style.setProperty('--holo-angle', angle + 'deg');
+        if (reflection) {
+          reflection.style.left = (x * 100) + '%';
+          reflection.style.top = (y * 100) + '%';
+        }
+      });
+
+      function animateCard() {
+        currentRotX += (targetRotX - currentRotX) * 0.08;
+        currentRotY += (targetRotY - currentRotY) * 0.08;
+        if (isHovering) {
+          card.style.transform = `rotateX(${currentRotX}deg) rotateY(${currentRotY}deg) scale(1.03)`;
+        }
+        requestAnimationFrame(animateCard);
+      }
+      animateCard();
+
+      // Floating gold particles (canvas 2D)
+      if (!particleCanvas) return;
+      const ctx = particleCanvas.getContext('2d');
+      const dpr = Math.min(window.devicePixelRatio, 2);
+      const pw = particleCanvas.offsetWidth;
+      const ph = particleCanvas.offsetHeight;
+      particleCanvas.width = pw * dpr;
+      particleCanvas.height = ph * dpr;
+      ctx.scale(dpr, dpr);
+
+      const particles = [];
+      for (let i = 0; i < 35; i++) {
+        particles.push({
+          x: Math.random() * pw, y: Math.random() * ph,
+          r: Math.random() * 1.8 + 0.4,
+          vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3,
+          alpha: Math.random() * 0.3 + 0.08,
+          pulse: Math.random() * Math.PI * 2,
+        });
+      }
+
+      function drawParticles() {
+        ctx.clearRect(0, 0, pw, ph);
+        const t = Date.now() * 0.001;
+        particles.forEach(p => {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0 || p.x > pw) p.vx *= -1;
+          if (p.y < 0 || p.y > ph) p.vy *= -1;
+          const flicker = Math.sin(t * 1.5 + p.pulse) * 0.15 + 0.85;
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(201,168,76,${p.alpha * flicker})`; ctx.fill();
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 3, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(201,168,76,${p.alpha * flicker * 0.15})`; ctx.fill();
+        });
+        requestAnimationFrame(drawParticles);
+      }
+      drawParticles();
+    }
+
+    // ========================================
+    // PRICING PARTICLES (subtle ambient 2D)
+    // ========================================
+    function initPricingParticles() {
+      const canvas = document.getElementById('pricing-particles');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const dpr = Math.min(window.devicePixelRatio, 2);
+
+      function resize() {
+        const rect = canvas.parentElement.getBoundingClientRect();
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        canvas.style.width = rect.width + 'px';
+        canvas.style.height = rect.height + 'px';
+        ctx.scale(dpr, dpr);
+      }
+      resize();
+
+      const particles = [];
+      const pw = canvas.parentElement.offsetWidth;
+      const ph = canvas.parentElement.offsetHeight;
+      for (let i = 0; i < 50; i++) {
+        particles.push({
+          x: Math.random() * pw, y: Math.random() * ph,
+          r: Math.random() * 1.2 + 0.3,
+          vx: (Math.random() - 0.5) * 0.15, vy: (Math.random() - 0.5) * 0.15,
+          alpha: Math.random() * 0.2 + 0.05,
+          pulse: Math.random() * Math.PI * 2,
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, pw, ph);
+        const t = Date.now() * 0.001;
+        particles.forEach(p => {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0 || p.x > pw) p.vx *= -1;
+          if (p.y < 0 || p.y > ph) p.vy *= -1;
+          const flicker = Math.sin(t * 1.2 + p.pulse) * 0.2 + 0.8;
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(201,168,76,${p.alpha * flicker})`;
+          ctx.fill();
+        });
+        requestAnimationFrame(draw);
+      }
+      draw();
+      window.addEventListener('resize', resize);
+    }
+
+    // ========================================
+    // TEXT SCRAMBLE
+    // ========================================
+    class TextScramble {
+      constructor(el) {
+        this.el = el;
+        this.chars = '!<>-_\\/[]{}—=+*^?#________';
+        this.frame = 0;
+        this.queue = [];
+        this.resolve = null;
+      }
+      setText(newText) {
+        const old = this.el.innerText;
+        const length = Math.max(old.length, newText.length);
+        this.queue = [];
+        for (let i = 0; i < length; i++) {
+          const from = old[i] || '';
+          const to = newText[i] || '';
+          const start = Math.floor(Math.random() * 20);
+          const end = start + Math.floor(Math.random() * 20);
+          this.queue.push({ from, to, start, end });
+        }
+        this.frame = 0;
+        this.update();
+        return new Promise(resolve => this.resolve = resolve);
+      }
+      update() {
+        let output = '', complete = 0;
+        for (let i = 0; i < this.queue.length; i++) {
+          let { from, to, start, end, char } = this.queue[i];
+          if (this.frame >= end) { complete++; output += to; }
+          else if (this.frame >= start) {
+            if (!char || Math.random() < 0.28) {
+              char = this.chars[Math.floor(Math.random() * this.chars.length)];
+              this.queue[i].char = char;
+            }
+            output += '<span style="opacity:0.4">' + char + '</span>';
+          } else { output += from; }
+        }
+        this.el.innerHTML = output;
+        if (complete === this.queue.length) { if (this.resolve) this.resolve(); }
+        else { requestAnimationFrame(() => this.update()); this.frame++; }
+      }
+    }
+
+    // ========================================
+    // MAIN INIT
+    // ========================================
+    function initPage() {
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' || typeof Lenis === 'undefined' || typeof THREE === 'undefined') {
+        setTimeout(initPage, 50);
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+      if (typeof SplitText !== 'undefined') gsap.registerPlugin(SplitText);
+
+      // ---- ACCESSIBILITY ----
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) {
+        gsap.globalTimeline.timeScale(100);
+        ScrollTrigger.config({ limitCallbacks: true });
+        document.getElementById('loader')?.remove();
+        document.getElementById('loaderBlinds')?.remove();
+      }
+
+      // ---- 3D SCENES ----
+      init3DHero();
+      initHoloCard();
+      initParticleCloud('cta-canvas');
+      initPricingParticles();
+
+      // ---- LENIS ----
+      const lenis = new Lenis({ lerp: 0.08, smoothWheel: true, wheelMultiplier: 0.8 });
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => lenis.raf(time * 1000));
+      gsap.ticker.lagSmoothing(0);
+
+      // ---- CINEMATIC PRELOADER ----
+      if (!prefersReducedMotion) {
+        const loader = document.getElementById('loader');
+        const counter = document.getElementById('loaderCounter');
+        const bar = document.getElementById('loaderBar');
+        const blinds = document.querySelectorAll('.loader-blind');
+
+        const loaderTl = gsap.timeline();
+        loaderTl.to({ val: 0 }, {
+          val: 100, duration: 2, ease: 'power2.inOut',
+          onUpdate: function() {
+            const v = Math.round(this.targets()[0].val);
+            if (counter) counter.textContent = v;
+            if (bar) bar.style.width = v + '%';
+          }
+        })
+        .to(loader, { opacity: 0, duration: 0.3, ease: 'power2.in' }, '+=0.2')
+        .set(loader, { display: 'none' })
+        .to(blinds, {
+          scaleY: 0, transformOrigin: 'top', duration: 0.7,
+          stagger: { each: 0.08, from: 'center' },
+          ease: 'power4.inOut'
+        }, '-=0.2')
+        .set(document.getElementById('loaderBlinds'), { display: 'none' });
+      }
+
+      // ---- SCROLL PROGRESS ----
+      ScrollTrigger.create({
+        trigger: document.body, start: 'top top', end: 'bottom bottom',
+        onUpdate: self => gsap.set('#scrollProgress', { scaleX: self.progress })
+      });
+
+      // ---- NAVBAR ----
+      ScrollTrigger.create({
+        start: 'top -80',
+        onUpdate: self => document.getElementById('navbar')?.classList.toggle('scrolled', self.progress > 0)
+      });
+
+      // ---- CUSTOM CURSOR ----
+      const dot = document.getElementById('cursorDot');
+      const ring = document.getElementById('cursorRing');
+      const glow = document.getElementById('cursorGlow');
+      const isTouch = window.matchMedia('(hover: none)').matches;
+
+      if (!isTouch && dot && ring) {
+        document.addEventListener('mousemove', e => {
+          gsap.to(dot, { x: e.clientX, y: e.clientY, duration: 0.08, ease: 'power2.out' });
+          gsap.to(ring, { x: e.clientX, y: e.clientY, duration: 0.25, ease: 'power2.out' });
+          gsap.to(glow, { x: e.clientX, y: e.clientY, duration: 0.5, ease: 'power2.out' });
+        });
+        document.addEventListener('mouseenter', () => gsap.to([dot, ring, glow], { opacity: 1, duration: 0.3 }));
+        document.addEventListener('mouseleave', () => gsap.to([dot, ring, glow], { opacity: 0, duration: 0.3 }));
+
+        document.querySelectorAll('a, button, .magnetic, .tilt-card, .faq-trigger, .conic-border').forEach(el => {
+          el.addEventListener('mouseenter', () => { ring.classList.add('hover'); dot.classList.add('hover'); });
+          el.addEventListener('mouseleave', () => { ring.classList.remove('hover'); dot.classList.remove('hover'); });
+        });
+      }
+
+      // ---- HERO ANIMATIONS (with SplitText) ----
+      const heroDelay = prefersReducedMotion ? 0 : 3.2;
+      const heroTl = gsap.timeline({ delay: heroDelay });
+
+      heroTl
+        .from('.hero-badge', { y: 30, opacity: 0, duration: 0.6, ease: 'power3.out' })
+        .from('.hero-line-inner', { y: '110%', rotateX: -15, stagger: 0.12, duration: 1, ease: 'power4.out' }, '-=0.2')
+        .to('.hero-desc', { opacity: 1, duration: 0.7, ease: 'power3.out' }, '-=0.5')
+        .to('.hero-ctas', { opacity: 1, duration: 0.6, ease: 'power3.out' }, '-=0.3')
+        .to('.hero-tags', { opacity: 1, duration: 0.5, ease: 'power3.out' }, '-=0.2')
+        .to('.hero-card-wrap', { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out' }, '-=0.8');
+
+      // Hero label scramble
+      const heroLabel = document.getElementById('heroLabel');
+      if (heroLabel) {
+        const scramble = new TextScramble(heroLabel);
+        gsap.delayedCall(heroDelay + 0.3, () => {
+          scramble.setText('Fintech Especializada em Crédito');
+        });
+      }
+
+      // SplitText for section headings (premium+ technique)
+      if (typeof SplitText !== 'undefined') {
+        gsap.utils.toArray('h2').forEach(el => {
+          if (!el.closest('#hero') && !el.closest('#cta')) {
+            ScrollTrigger.create({
+              trigger: el,
+              start: 'top 85%',
+              once: true,
+              onEnter: () => {
+                const split = new SplitText(el, { type: 'lines,words', linesClass: 'split-line' });
+                split.lines.forEach(line => {
+                  const wrapper = document.createElement('div');
+                  wrapper.style.overflow = 'hidden';
+                  line.parentNode.insertBefore(wrapper, line);
+                  wrapper.appendChild(line);
+                });
+                gsap.from(split.lines, { y: '110%', rotateX: -15, stagger: 0.1, duration: 1, ease: 'power4.out' });
+              }
+            });
+          }
+        });
+      }
+
+      // ---- SCROLL REVEAL ----
+      gsap.utils.toArray('.reveal').forEach(el => {
+        gsap.from(el, {
+          scrollTrigger: { trigger: el, start: 'top 88%' },
+          y: 50, opacity: 0, rotationX: -8, transformOrigin: 'top center',
+          duration: 1, ease: 'power3.out',
+        });
+      });
+
+      // ---- CLIP-PATH REVEALS ----
+      gsap.utils.toArray('.clip-reveal').forEach(section => {
+        gsap.fromTo(section,
+          { clipPath: 'inset(100% 0 0 0)' },
+          {
+            clipPath: 'inset(0% 0 0 0)',
+            scrollTrigger: { trigger: section, start: 'top 85%', end: 'top 30%', scrub: 0.8 },
+            ease: 'none',
+          }
+        );
+      });
+
+      // ---- PARALLAX DEPTH ----
+      gsap.utils.toArray('[data-parallax]').forEach(el => {
+        const speed = parseFloat(el.dataset.parallax) || -0.3;
+        gsap.to(el, {
+          y: () => speed * 300, ease: 'none',
+          scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: 0.5 }
+        });
+      });
+
+      // ---- SCROLL VELOCITY SKEW ----
+      let currentSkew = 0, targetSkew = 0;
+      ScrollTrigger.create({
+        onUpdate: self => { targetSkew = Math.min(Math.max(self.getVelocity() * -0.002, -4), 4); }
+      });
+      gsap.ticker.add(() => {
+        currentSkew += (targetSkew - currentSkew) * 0.1;
+        targetSkew *= 0.92;
+        gsap.set('.skew-scroll', { skewY: currentSkew });
+      });
+
+      // ---- ORIGIN STEPS STAGGER ----
+      gsap.from('.origin-step', {
+        scrollTrigger: { trigger: '.origin-step', start: 'top 85%' },
+        x: 40, opacity: 0, stagger: 0.15, duration: 0.8, ease: 'power3.out',
+      });
+
+      // ---- BIG NUMBER PARALLAX ----
+      gsap.utils.toArray('.big-num').forEach(el => {
+        gsap.to(el, {
+          scrollTrigger: { trigger: el.parentElement, scrub: 1.5 },
+          y: -40, ease: 'none',
+        });
+      });
+
+      // ---- COUNTER ANIMATION ----
+      gsap.utils.toArray('.counter').forEach(el => {
+        const target = parseInt(el.dataset.target);
+        const suffix = el.dataset.suffix || '';
+        const obj = { val: 0 };
+        gsap.to(obj, {
+          scrollTrigger: { trigger: el, start: 'top 85%' },
+          val: target, duration: 2.5, ease: 'power2.out',
+          onUpdate: () => { el.textContent = Math.round(obj.val) + suffix; }
+        });
+      });
+
+      // ---- CTA WORD REVEAL ----
+      ScrollTrigger.create({
+        trigger: '#cta', start: 'top 70%', once: true,
+        onEnter: () => {
+          gsap.from('.cta-word-inner', { y: '110%', stagger: 0.12, duration: 1, ease: 'power4.out' });
+        },
+      });
+
+      // ---- MAGNETIC BUTTONS (with inner parallax) ----
+      document.querySelectorAll('.magnetic').forEach(btn => {
+        btn.addEventListener('mousemove', e => {
+          const r = btn.getBoundingClientRect();
+          const dx = e.clientX - r.left - r.width / 2;
+          const dy = e.clientY - r.top - r.height / 2;
+          gsap.to(btn, { x: dx * 0.3, y: dy * 0.3, duration: 0.3, ease: 'power2.out' });
+          // Button mouse-tracking gradient
+          btn.style.setProperty('--btn-glow-x', (e.clientX - r.left) + 'px');
+          btn.style.setProperty('--btn-glow-y', (e.clientY - r.top) + 'px');
+          const inner = btn.querySelector('svg') || btn.querySelector('span');
+          if (inner) gsap.to(inner, { x: dx * 0.15, y: dy * 0.15, duration: 0.3 });
+        });
+        btn.addEventListener('mouseleave', () => {
+          gsap.to(btn, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1,0.3)' });
+          const inner = btn.querySelector('svg') || btn.querySelector('span');
+          if (inner) gsap.to(inner, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1,0.3)' });
+        });
+      });
+
+      // ---- 3D TILT CARDS (with shine) ----
+      document.querySelectorAll('.tilt-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const r = card.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5;
+          const y = (e.clientY - r.top) / r.height - 0.5;
+          gsap.to(card, {
+            rotateY: x * 12, rotateX: -y * 12,
+            duration: 0.4, ease: 'power2.out', transformPerspective: 800
+          });
+          card.style.setProperty('--shine-x', ((x + 0.5) * 100) + '%');
+          card.style.setProperty('--shine-y', ((y + 0.5) * 100) + '%');
+        });
+        card.addEventListener('mouseleave', () => {
+          gsap.to(card, { rotateY: 0, rotateX: 0, duration: 0.6, ease: 'power3.out' });
+        });
+      });
+
+      // ---- TESTIMONIAL CAROUSEL ----
+      const slides = document.querySelectorAll('.testimonial-slide');
+      const dots = document.querySelectorAll('.carousel-dot');
+      let currentSlide = 0;
+      let autoplayInterval;
+
+      function goToSlide(index) {
+        slides.forEach(s => s.classList.remove('active'));
+        dots.forEach(d => d.style.background = 'rgba(255,255,255,0.2)');
+        slides[index]?.classList.add('active');
+        dots[index].style.background = 'var(--accent)';
+        currentSlide = index;
+      }
+
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+          goToSlide(i);
+          clearInterval(autoplayInterval);
+          startAutoplay();
+        });
+      });
+
+      function startAutoplay() {
+        autoplayInterval = setInterval(() => {
+          goToSlide((currentSlide + 1) % slides.length);
+        }, 5000);
+      }
+      startAutoplay();
+
+      // ---- FAQ ----
+      document.querySelectorAll('.faq-trigger').forEach(t => {
+        t.addEventListener('click', () => {
+          const item = t.closest('.faq-item');
+          const wasActive = item.classList.contains('active');
+          document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+          if (!wasActive) item.classList.add('active');
+        });
+      });
+
+      // ---- HAMBURGER ----
+      const hb = document.getElementById('hamburgerBtn');
+      const mm = document.getElementById('mobileMenu');
+      if (hb && mm) {
+        hb.addEventListener('click', () => { hb.classList.toggle('active'); mm.classList.toggle('active'); });
+        mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hb.classList.remove('active'); mm.classList.remove('active'); }));
+      }
+
+      // ---- ANCHOR SMOOTH SCROLL ----
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          const target = document.querySelector(a.getAttribute('href'));
+          if (target) lenis.scrollTo(target, { offset: -80 });
+        });
+      });
+
+      // ---- ADVANCED STAGGER (features grid) ----
+      const featGrid = document.querySelector('#features .grid');
+      if (featGrid) {
+        gsap.from(featGrid.querySelectorAll('.tilt-card'), {
+          scrollTrigger: { trigger: featGrid, start: 'top 80%' },
+          y: 40, opacity: 0, scale: 0.95, duration: 0.6,
+          stagger: { grid: 'auto', from: 'start', each: 0.08, ease: 'power2.out' }
+        });
+      }
+
+    }
+
+    // Start
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPage);
+    } else {
+      initPage();
+    }
+  })();
+  </script>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FinancialService","name":"ETF Open Finance","description":"Fintech especializada em crédito estruturado para traders e profissionais do mercado financeiro.","url":"https://etfopenfinance.com.br","founder":[{"@type":"Person","name":"Gabriel Rubim"},{"@type":"Person","name":"Davi Medeiros"}],"areaServed":"BR"}
+  </script>
+</body>
+</html>
